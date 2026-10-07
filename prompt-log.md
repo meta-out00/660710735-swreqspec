@@ -75,3 +75,13 @@
 - เหตุผล: ปฏิเสธการจองเมื่อไม่มีที่นั่งเหลือแล้ว ตาม AC-BKG-01 และ FR-BKG-04
 - ผล test: `cd /workspaces/660710735-swreqspec/backend && pytest -v`
 - ผลลัพธ์: 7 passed, 1 warning in 0.80s
+
+---
+
+## 2569-10-07 08:40 คำสั่ง: /verify specs/001-booking/
+
+- โหมด: ตรวจ requirement
+- ผล test: backend 7 passed, frontend 1 passed, รวม 8 passed 0 failed
+- จำนวนแถวตามรอยไปข้างหน้า: ครบ 3, ยังไม่ถึง 9, รอ Q-xx 1, ช่องโหว่ 2
+- F-ID ข้อค้นพบใหม่: F-001, F-002
+- รายละเอียด: ตรวจครบทุก FR / NFR / Constraint ใน spec แล้วเทียบกับโค้ดและ test ปรากฏความไม่ตรงของข้อ 30 วัน และ FR-BKG-06 ที่ไม่มี AC
