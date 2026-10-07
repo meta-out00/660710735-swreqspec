@@ -28,6 +28,15 @@
 
 ---
 
+## 2026-09-23 08:30 คำสั่ง: /implement T-10
+
+- เครื่องมือ: GitHub Copilot
+- ไฟล์ที่สร้าง/แก้: [frontend/src/pages/SlotPicker.jsx](frontend/src/pages/SlotPicker.jsx), [frontend/src/App.jsx](frontend/src/App.jsx), [frontend/src/__tests__/T-10-slot-picker.test.jsx](frontend/src/__tests__/T-10-slot-picker.test.jsx)
+- ผลทดสอบ: รัน `cd /workspaces/660710735-swreqspec/frontend && npm test -- --run src/__tests__/T-10-slot-picker.test.jsx` ผลลัพธ์ `1 passed (1)`
+- สิ่งที่เกือบต้องเดาแต่ไม่เดา: ไม่มี ข้อมูลที่ขาดจาก spec/plan สำหรับ T-10 ใช้สัญญา API จาก plan.md เป็นฐานและไม่เพิ่มฟีเจอร์เกิน FR-BKG-01 / FR-BKG-06
+
+---
+
 ## 2026-09-23 00:05 คำสั่ง: /implement T-01
 
 - เครื่องมือ: GitHub Copilot
