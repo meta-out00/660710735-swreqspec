@@ -53,3 +53,25 @@
 - TC ID ที่เสนอ: TC-BKG-01-1, TC-BKG-01-2, TC-BKG-01-3
 - ผลลัพธ์: เสนอแถว 3 แถว สถานะ "ร่าง" และหยุดก่อนเขียนโค้ด test เพราะตาราง test-cases.md ยังไม่มีแถวที่ใช้ได้สำหรับ AC-BKG-01
 - ข้อสังเกต: task ที่ตรวจด้วย AC-BKG-01 คือ T-03 (สถานะ: เสร็จ) และ T-06 (สถานะ: รอ Q-02) แต่ยังไม่มีแถวในตาราง จึงอยู่ในโหมดร่างต่อไป
+
+---
+
+## 2569-10-07 11.35 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: เขียน test
+- TC ID ที่เขียน: TC-BKG-01-1, TC-BKG-01-2, TC-BKG-01-3
+- ไฟล์ที่แก้: backend/tests/test_AC_BKG_01.py
+- ผล test: 1 failed, 6 passed
+- รายละเอียด: test_TC_BKG_01_2_booking_boundary_full_slot ไม่ผ่าน เพราะระบบยอมรับการจองเมื่อ remaining = 0 โดย POST /bookings คืน 201 แทน 409
+- สาเหตุที่น่าจะเป็น: backend/app/booking/service.py ใน create_booking ตรวจเพียง `if slot.remaining < 0:` แทนควรเป็น `if slot.remaining <= 0:` เพื่อปฏิเสธช่วงที่เต็มตาม AC-BKG-01 และ FR-BKG-04
+- สถานะ: ไม่ผ่าน เพราะโค้ดทำไม่ตรง AC (เจอบั๊ก) ไม่ใช่ test เขียนไม่ตรงแถว
+
+---
+
+## 2569-10-07 11.55 คำสั่ง: ปรับแก้ bug ใน backend/app/booking/service.py สำหรับ AC-BKG-01
+
+- โหมด: แก้ระบบ (เฉพาะไฟล์ backend/app/booking/service.py)
+- เปลี่ยนแปลง: `if slot.remaining < 0:` -> `if slot.remaining <= 0:`
+- เหตุผล: ปฏิเสธการจองเมื่อไม่มีที่นั่งเหลือแล้ว ตาม AC-BKG-01 และ FR-BKG-04
+- ผล test: `cd /workspaces/660710735-swreqspec/backend && pytest -v`
+- ผลลัพธ์: 7 passed, 1 warning in 0.80s
